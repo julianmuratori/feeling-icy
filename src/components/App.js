@@ -1,6 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import {render} from 'react-dom';
 import SearchLocation from './SearchLocation';
+import Container from './Container';
 
 class App extends React.Component {
 
@@ -8,39 +9,37 @@ class App extends React.Component {
     super();
 
     this.getMyLocation = this.getMyLocation.bind(this);
+    // this.userLoc = this.userLocation.bind(this);
 
     this.state = {
       location: {
-        longitude: [],
-        latitude: []
+        longitude: {},
+        latitude: {}
       }
     };
   }
 
+
+
+  // Pulls user location from auto-detect button and adds to state
   getMyLocation(userLocation) {
   // copy of state
-    const loc = this.state.location;
-    const newLat = loc.latitude;
-    const newLong = loc.longitude;
+    const loc = {...this.state.location};
 
-  // add new location to copied array
-    newLat.push(userLocation.latitude);
-    newLong.push(userLocation.longitude);
-    console.log(newLat, newLong);
+  // add new location to copy
+    loc.latitude = userLocation.latitude;
+    loc.longitude = userLocation.longitude;
 
   // set new state
-    this.setState({
-      location: {
-        longitude: newLong,
-        latitude: newLat
-      }
-    });
+    this.setState({ location: loc });
   }
+
 
     render() {
       return (
         <div className="container">
           <SearchLocation getMyLocation={this.getMyLocation}/>
+          <Container userLoc={this.state.location}/>
         </div>
       )
     }
