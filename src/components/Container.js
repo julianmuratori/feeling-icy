@@ -13,7 +13,7 @@ class Container extends React.Component {
     // }
     return (
       <div>
-        <Mappy google={this.props.google} userLoc={this.props.userLoc}/>
+        <Mappy google={this.props.google} userLoc={this.props.userLoc} loadMap={this.props.loadMap}/>
       </div>
     )
   }
