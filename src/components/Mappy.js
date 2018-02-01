@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class Mappy extends React.Component {
+  // ComponentDidUpdate is called after render is finished in each re-render cycle. This means you can be sure that the component and all its sub-components have properly rendered
+
   componentDidUpdate(prevProps, prevState) {
     // makes sure google api is available before loading component on the page
     if (prevProps.google !== this.props.google) {
